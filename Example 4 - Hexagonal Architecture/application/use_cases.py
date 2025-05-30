@@ -13,3 +13,20 @@ class TaskUseCase(TaskInputPort):
 
     def get_all_tasks(self) -> list[Task]:
         return self.repo.list_all()
+    
+    # Crear un metodo para poner la tarea como completada
+    def mark_task_done(self, task_id: str) -> Task:
+        # primera forma 
+        task = self.repo.get_by_id(task_id)
+        if task:
+            task.mark_done()
+            # self.repo.save(task)
+            return task
+        raise ValueError(f"Task with id {task_id} not found")
+
+    # def mark_task_done_alternative(self, task_id: str) -> Task:
+    #     # segunda forma
+    #     for task in self.tasks:
+    #         if task.id  == task_id:
+    #             task.mark_done()
+    #     raise ValueError(f"Task with id {task_id} not found")

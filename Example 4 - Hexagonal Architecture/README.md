@@ -21,3 +21,11 @@ Returns a list of all created tasks.
 ```bash
 curl http://localhost:5000/tasks
 ```
+
+Change the attribute done of one task passing by the id of the task 
+
+```bash
+curl -X PUT http://localhost:5000/tasks/<id>/done \
+ -H "Content-Type: application/json"  \
+ -d " \{\"title\": \"Aprender arquitectura hexagonal\"}"
+```
